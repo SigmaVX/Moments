@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Scheduler</title>
+
+     <!-- Bootsrap CSS, AJAX, & jQuery CDN Links -->
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+ 
+     <!-- CSS & Font Files --> 
+     <link rel="stylesheet" href="./assets/css/style.css">
+
+
+</head>
+<body>
+    
+    <!-- Enter Info Section -->
+    <div class="container" id="start-page">
+        <h1 class="text-center">Moments</h1>
+        <h2 class="text-center">Relive Your Moments</h2>
+
+        <form class="offset-4 col-4 justify-content-center" id="addTrainsForm">                      
+            <div class="form-group text-center">
+                <label class="text-center" for="moment-label">Your Moment | Enter A Date</label>
+                <input type="text" class="form-control" id="name" placeholder="10/31/1955">
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" id="add" class="btn btn-block">Add A Moment</button>  
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" id="start" class="btn btn-block">Start</button>   
+            </div>
+        </form>
+    </div>
+   
+
+        
+    <!-- Add Dates Section -->
+  
+
+     <!-- Table Results Section -->
+     <div class="container" id="results-section">
+        <div class="row card">
+            <div class="card-header text-center">
+                Your Moments<br><span class="cardSubHeader">Copy Your Links</span>
+            </div>
+                <table class="table text-center" id="results-table">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            Movie Poster
+                        </th>
+                        <th scope="col">
+                            Movie Poster
+                        </th>
+                        <th scope="col">
+                            Headline
+                        </th>
+                        <th scope="col">
+                            Headline
+                        </th>
+                        <th scope="col">
+                            Extra
+                        </th>
+                        <th scope="col">
+                            Extra
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tableRows">
+
+                </tbody>
+            </table>   
+        </div>
+    </div>
+
+
+    <!--Footer Section-->
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 pt-4 pb-3 text-center">
+                    <p><strong>© Copyright 2018 GTJ</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap, Firebase, Moment.JS, & JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script src="./assets/javascript/logic.js"></script>
+
+</body>
+</html>
