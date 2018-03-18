@@ -1,4 +1,27 @@
-#start-page{
-    min-height: 100vh;
-    padding-top: 10%;
+
+
+#start-page, #momentsArea, #results-section{
+    /* min-height: 100vh; */
+    /* padding-top: 10%; */
 }
+
+.headline{
+    border: 2px solid darkslategrey;
+}
+
+
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
