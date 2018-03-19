@@ -1,9 +1,6 @@
-$(document).ready(function(){
-
-
-function init(){
-    $('#fullpage').fullpage({
-       //Navigation
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		//Navigation
 		menu: '#menu',
 		lockAnchors: false,
 		anchors:['firstPage', 'secondPage'],
@@ -74,43 +71,5 @@ function init(){
 		afterResponsive: function(isResponsive){},
 		afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
 		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
-    });
-}
-
-function makeMoment(i){
-    console.log("test");
-    $.fn.fullpage.destroy('all');
-    var newSection = $("<div>").attr("class", "section");
-        newSection.attr("id", "section" + i);
-        $("#fullpage").prepend(newSection);
-    var newContainer = $("<div>").attr("class", "container");
-        newSection.append(newContainer);
-    var newRow = $("<div>").attr("class", "row no-gutters text-center");
-        newContainer.append(newRow);
-    var newDivOne = $("<div>").attr("class", "offset-3 col-2");
-        newRow.append(newDivOne);
-    var posterOne = $("<img>").attr({
-            class: "img-fluid",
-            alt: "movie-poster",
-            src: "./assets/images/test-poster.jpg"
-            });
-        newDivOne.append(posterOne);
-    var newDivTwo = $("<div>").attr("class", "col-3 d-flex headline align-items-center");
-        newRow.append(newDivTwo);
-    var headlineOne = $("<h5>").html("Lorem ipsum dolor amet chambray tattooed truffaut");
-        headlineOne.attr("class", "headline-text" );
-        newDivTwo.append(headlineOne);
-    init();
-
-}
-
-$("#start").on("click", function(event){
-    event.preventDefault();
-    console.log("click OK");
-    makeMoment();
-    $("#start-section").hide();
-});
-
-
-
+	});
 });

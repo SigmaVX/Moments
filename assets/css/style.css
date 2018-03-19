@@ -1,8 +1,12 @@
 
 
-#start-page, #momentsArea, #results-section{
-    /* min-height: 100vh; */
-    /* padding-top: 10%; */
+#start-page {
+    min-height: 100vh;
+    padding-top: 10%;
+}
+
+.section{
+    min-height: 100vh;
 }
 
 .headline{
