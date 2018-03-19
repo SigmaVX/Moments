@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Moments</title>
+
+     <!-- Bootsrap CSS, AJAX, & jQuery CDN Links -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.css">
+     
+     <!-- CSS & Font Files --> 
+     <link rel="stylesheet" href="./assets/css/style.css">
+
+
+</head>
+<body>
+
+
+    
+    <!-- Start Section -->
+    <div class="section" id="start-section">
+        <div class="container" id="start-page">
+            <h1 class="text-center">Moments</h1>
+            <h2 class="text-center">Relive Your Moments</h2>
+
+            <form class="offset-4 col-4 justify-content-center" id="addTrainsForm">                      
+                <div class="form-group text-center" id="first-date">
+                    <label class="text-center" for="moment-label">Your Moment | Enter A Date</label>
+                    <input type="text" class="form-control" id="name" placeholder="10/31/1955">
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" id="add" class="btn btn-block">Add Another Moment</button>  
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" id="start" class="btn btn-block">Start</button>   
+                </div>
+            </form>
+        </div>
+
+        <!--Footer Section-->
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 pt-4 pb-3 text-center">
+                        <p><strong>© Copyright 2018 GTJ</strong></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Moments Section -->
+<div id="fullpage">
+
+
+
+
+        <!-- <div class="section" id="section1">
+            <div class="container" id="momentsArea">
+                <div class="row no-gutters text-center">
+                    <div class="offset-3 col-2">
+                        <img class="img-fluid" alt="movie-poster" src="./assets/images/test-poster.jpg">    
+                    </div>
+                    <div class="col-3 d-flex headline align-items-center">
+                        <h5 class="">Lorem ipsum dolor amet chambray tattooed truffaut</h5>
+                    </div>
+                </div>
+                <div class="row no-gutters text-center">
+                    <div class="order-1 offset-4 col-3 d-flex headline align-items-center">
+                        <h5 class="">Lorem ipsum dolor amet chambray tattooed truffaut</h5>
+                    </div>
+                    <div class="order-2 col-2">
+                        <img class="img-fluid" alt="movie-poster" src="./assets/images/test-poster.jpg">    
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    <!-- Results Section -->
+    <div class="section" id="results">
+        <div class="container" id="results-section">
+            <div class="row card">
+                <div class="card-header text-center">
+                    Your Moments<br><span class="cardSubHeader">Copy Your Links</span>
+                </div>
+                    <table class="table text-center" id="results-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Movie Poster
+                            </th>
+                            <th scope="col">
+                                Movie Poster
+                            </th>
+                            <th scope="col">
+                                Headline
+                            </th>
+                            <th scope="col">
+                                Headline
+                            </th>
+                            <th scope="col">
+                                Extra
+                            </th>
+                            <th scope="col">
+                                Extra
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableRows">
+                        <!-- Add Table Data Here -->
+                    </tbody>
+                </table>   
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+    <!-- Bootstrap, Firebase, Moment.JS, & JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.6/jquery.fullpage.js"></script>
+    <script src="./assets/javascript/fullscreen.js"></script>
+    <script src="./assets/javascript/logic.js"></script>
+
+</body>
+</html>
