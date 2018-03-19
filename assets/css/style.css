@@ -1,19 +1,31 @@
 
 
-#start-page {
-    min-height: 100vh;
-    padding-top: 10%;
+.headline{
+    border: 2px solid darkslategrey;
 }
 
 .section{
     min-height: 100vh;
 }
 
-.headline{
-    border: 2px solid darkslategrey;
+
+#moment-counter{
+    border-radius: 50%;
+    background-color: grey;
+    color: #ffffff;
+    width: 100px;
+    height: 100px;
+    font-size: 70px;
+    margin: 0 auto;
+
+}
+
+#start-page {
+    padding-top: 10%;
 }
 
 
+/* Keeps Placeholder Date Center in Form */
 ::-webkit-input-placeholder {
     text-align: center;
  }

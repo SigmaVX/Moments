@@ -87,7 +87,7 @@ function makeMoment(i){
         newSection.append(newContainer);
     var newRow = $("<div>").attr("class", "row no-gutters text-center");
         newContainer.append(newRow);
-    var newDivOne = $("<div>").attr("class", "offset-3 col-2");
+    var newDivOne = $("<div>").attr("class", "offset-3 col-6");
         newRow.append(newDivOne);
     var posterOne = $("<img>").attr({
             class: "img-fluid",
@@ -104,13 +104,17 @@ function makeMoment(i){
 
 }
 
-$("#start").on("click", function(event){
-    event.preventDefault();
-    console.log("click OK");
-    makeMoment();
-    $("#start-section").hide();
-});
+	// Runs the JQ to Display Images and Start Annimation 
+	$("#start").on("click", function(event){
+		event.preventDefault();
+		console.log("click OK");
+		makeMoment();
+		$("#start-section").hide();
+	});
 
 
 
+
+
+//Keep This Closing Bracket For jQuery Load Function 
 });
