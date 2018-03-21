@@ -1,29 +1,34 @@
-$(document).ready(function(){
+var slideCount = 0;
 
+
+$(document).ready(function(){
+	$('#fullpage').fullpage({
+		
+	});
 
 function init(){
     $('#fullpage').fullpage({
        //Navigation
 		menu: '#menu',
-		lockAnchors: false,
-		anchors:['firstPage', 'secondPage'],
+		lockAnchors: true,
+		anchors:['firstPage', 'secondPage', 'thirdPage'],
 		navigation: false,
 		navigationPosition: 'right',
 		navigationTooltips: ['firstSlide', 'secondSlide'],
 		showActiveTooltip: false,
-		slidesNavigation: false,
+		slidesNavigation: true,
 		slidesNavPosition: 'bottom',
 
 		//Scrolling
 		css3: true,
-		scrollingSpeed: 700,
+		scrollingSpeed: 1000,
 		autoScrolling: true,
 		fitToSection: true,
 		fitToSectionDelay: 1000,
 		scrollBar: false,
 		easing: 'easeInOutCubic',
 		easingcss3: 'ease',
-		loopBottom: false,
+		loopBottom: true,
 		loopTop: false,
 		loopHorizontal: true,
 		continuousVertical: false,
@@ -32,7 +37,7 @@ function init(){
 		interlockedSlides: false,
 		dragAndMove: false,
 		offsetSections: false,
-		resetSliders: false,
+		resetSliders: true,
 		fadingEffect: false,
 		normalScrollElements: '#element1, .element2',
 		scrollOverflow: false,
@@ -48,12 +53,11 @@ function init(){
 		recordHistory: true,
 
 		//Design
-		controlArrows: true,
+		controlArrows: false,
 		verticalCentered: true,
-		sectionsColor : ['#ccc', '#fff'],
-		paddingTop: '3em',
-		paddingBottom: '10px',
-		fixedElements: '#header, .footer',
+		sectionsColor : ['red', 'blue', 'yellow', 'whitesmoke', 'black'],
+		paddingTop: '1em',
+		paddingBottom: '1em',
 		responsiveWidth: 0,
 		responsiveHeight: 0,
 		responsiveSlides: false,
@@ -78,14 +82,18 @@ function init(){
 }
 
 function makeMoment(i){
-    console.log("test");
+
+	slideCount++;
+	console.log("Slide Count: " + slideCount);
+
     $.fn.fullpage.destroy('all');
 	
 	var newSection = $("<div>").attr("class", "section");
-        newSection.attr("id", "section" + i);
+		newSection.attr("style", "padding-top: 0px;")
+        newSection.attr("id", "section" + slideCount);
         $("#fullpage").prepend(newSection);
 	
-	var newContainer = $("<div>").attr("class", "container");
+	var newContainer = $("<div>").attr("class", "container wrapper");
         newSection.append(newContainer);
 	
 	// Row 1
@@ -272,11 +280,14 @@ function makeMoment(i){
 						headlineThree.attr("class", "card-title headline-text" );
 						newsBodyThree.append(headlineThree);
 				
+		// Date Overlay
+		var dateOverlay = $("<h2>").html("10/22/1955");
+			dateOverlay.attr("class", "col-12 date-overlay");
+			newSection.append(dateOverlay);
+
 	init();
 
 }
-
-
 
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
@@ -284,7 +295,9 @@ function makeMoment(i){
 		console.log("click OK");
 		makeMoment();
 		makeMoment();
+		makeMoment();
 		$("#start-section").hide();
+		$("#videoHolder").hide();
 	});
 
 
