@@ -2,23 +2,21 @@ var slideCount = 0;
 
 
 $(document).ready(function(){
-	$('#fullpage').fullpage({
+	
+// 	$('#fullpage').fullpage({
 		
-	});
+// 	});
 
 function init(){
     $('#fullpage').fullpage({
        //Navigation
 		menu: '#menu',
-		lockAnchors: true,
+		lockAnchors: false,
 		anchors:['firstPage', 'secondPage', 'thirdPage'],
-		navigation: false,
-		navigationPosition: 'right',
-		navigationTooltips: ['firstSlide', 'secondSlide'],
+		navigation: true,
+		navigationPosition: 'center',
 		showActiveTooltip: false,
-		slidesNavigation: true,
-		slidesNavPosition: 'bottom',
-
+		
 		//Scrolling
 		css3: true,
 		scrollingSpeed: 1000,
@@ -32,7 +30,6 @@ function init(){
 		loopTop: false,
 		loopHorizontal: true,
 		continuousVertical: false,
-		continuousHorizontal: false,
 		scrollHorizontally: false,
 		interlockedSlides: false,
 		dragAndMove: false,
@@ -50,12 +47,11 @@ function init(){
 		//Accessibility
 		keyboardScrolling: true,
 		animateAnchor: true,
-		recordHistory: true,
 
 		//Design
 		controlArrows: false,
 		verticalCentered: true,
-		sectionsColor : ['red', 'blue', 'yellow', 'whitesmoke', 'black'],
+		sectionsColor : ['red', 'blue', 'yellow', 'grey', 'black'],
 		paddingTop: '1em',
 		paddingBottom: '1em',
 		responsiveWidth: 0,
@@ -68,16 +64,6 @@ function init(){
 		sectionSelector: '.section',
 		slideSelector: '.slide',
 
-		lazyLoading: true,
-
-		//events
-		onLeave: function(index, nextIndex, direction){},
-		afterLoad: function(anchorLink, index){},
-		afterRender: function(){},
-		afterResize: function(){},
-		afterResponsive: function(isResponsive){},
-		afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-		onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
     });
 }
 
@@ -86,11 +72,13 @@ function makeMoment(i){
 	slideCount++;
 	console.log("Slide Count: " + slideCount);
 
-    $.fn.fullpage.destroy('all');
+	// Kills current running version so JQ can add content
+	// This is not needed if fullpage is not running so it has been disabled for now
+    // $.fn.fullpage.destroy('all');
 	
-	var newSection = $("<div>").attr("class", "section");
+	var newSection = $("<div>").attr("class", "section slide");
 		newSection.attr("style", "padding-top: 0px;")
-        newSection.attr("id", "section" + slideCount);
+        newSection.attr("data-anchor", "section" + slideCount);
         $("#fullpage").prepend(newSection);
 	
 	var newContainer = $("<div>").attr("class", "container wrapper");
@@ -285,12 +273,11 @@ function makeMoment(i){
 			dateOverlay.attr("class", "col-12 date-overlay");
 			newSection.append(dateOverlay);
 
-	init();
-
 }
 
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
+		slideCount = 0;
 		event.preventDefault();
 		console.log("click OK");
 		makeMoment();
@@ -298,6 +285,8 @@ function makeMoment(i){
 		makeMoment();
 		$("#start-section").hide();
 		$("#videoHolder").hide();
+		// $.fn.fullpage.reBuild();
+		init();
 	});
 
 
