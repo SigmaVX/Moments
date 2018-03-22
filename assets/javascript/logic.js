@@ -78,7 +78,7 @@ function makeMoment(i){
 	
 	var newSection = $("<div>").attr("class", "section slide");
 		newSection.attr("style", "padding-top: 0px;")
-        newSection.attr("data-anchor", "section" + slideCount);
+        newSection.attr("data-anchor", "slide" + slideCount);
         $("#fullpage").prepend(newSection);
 	
 	var newContainer = $("<div>").attr("class", "container wrapper");
