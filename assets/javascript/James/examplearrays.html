@@ -1,0 +1,112 @@
+:
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Year</label>
+            <input type="text" class="form-control" id="userYear" placeholder="Format: YYYY">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Month</label>
+            <input type="text" class="form-control" id="userMonth" placeholder="Format: MM">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Month</label>
+            <input type="text" class="form-control" id="userDay" placeholder="Format: DD">
+        </div>
+    </form>
+
+    <button type="button" class="btn btn-primary" id="submit">Submit</button>
+    <button type="button" class="btn btn-primary" id="add">add</button>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // decalare our arrays
+        $(document).ready(function () {
+            var dates = [];
+            var searchResults = [];
+            // lays out the foundation for the future object
+
+            function Searchdate(day, month, year) {
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
+            // resets the form for the user
+            function clearfields() {
+                $("#userDay").val('');
+                $("#userMonth").val('');
+                $("#userYear").val('');
+
+            }
+            // grabs the date and used for the onclickevent.(reffred to later)
+            //pushes the added date into the dates array via newSearchdate
+            function addDate() {
+                var queryDay = $("#userDay").val().trim();
+                var queryMonth = $("#userMonth").val().trim();
+                var queryYear = $("#userYear").val().trim();
+                var addedDate = new Searchdate(queryDay, queryMonth, queryYear);
+                dates.push(addedDate);
+                clearfields();
+            }
+
+
+            //on click event that is needed runs the fuction addDate
+            $("#add").on("click", function (e) {
+                e.preventDefault();
+                addDate();
+
+            })
+            //builds the search array using the variables declared in the next function querySearch
+            //${x} = template literals(aka "varible"+)
+
+            function queryCall(a, b) {
+                $.ajax({
+                    url: `https://api.themoviedb.org/3/discover/movie?primary_release_date.lte=${a}-${b}&primary_release_date.gte=${a}-${b}&page=1&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
+                    method: "GET",
+                    success: function (res) {
+                        searchResults.push(res);
+
+                    }
+
+                })
+
+            }
+            //this function is the forloop that 
+            function querySearch() {
+                for (var i = 0; i < dates.length; i++) {
+                    var x = dates[i].year;
+                    var y = dates[i].month;
+                    queryCall(x, y);
+                }
+
+            }
+
+
+            $("#submit").on("click", function (e) {
+                    e.preventDefault();
+                    querySearch();
+                }
+
+            )
+
+
+        })
+    </script>
+
+</body>
+
+</html>
