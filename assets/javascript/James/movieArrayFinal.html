@@ -37,7 +37,11 @@
         // decalare our arrays
         $(document).ready(function () {
             var dates = [];
-            var searchResults = [];
+            var movieArtOne = [];
+            var movieArtTwo = [];
+            var movieArtThree = [];
+            
+
             // lays out the foundation for the future object
 
             function Searchdate(day, month, year) {
@@ -78,11 +82,35 @@
                     url: `https://api.themoviedb.org/3/discover/movie?primary_release_date.lte=${a}-${b}&primary_release_date.gte=${a}-${b}&page=1&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
                     method: "GET",
                     success: function (res) {
-                        searchResults.push(res);
+                       
+                        // for (var i = 0; i < 3; i++) {
+                            movieArtOne.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[0].poster_path);
+                            movieArtTwo.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[1].poster_path);
+                            movieArtThree.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[2].poster_path);
+                            
+
+                        // }
+                        console.log(res);
+                        console.log(movieArtOne);
+                        console.log(movieArtTwo);
+                        console.log(movieArtThree);
+
 
                     }
 
                 })
+
+                // $.ajax({
+                //     url: `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=6bbf303c1d5f47a8b9b82a475fe15fe7&q=national%20news&begin_date=${a}${b}&sort=oldest&page=1&facet_filter=true`
+                //     method: "GET",
+                //     success: function (res) {
+                //         searchResults.push(res);
+                //         console.log(searchResults);
+
+                //     }
+
+                // })
+
 
             }
             //this function is the forloop that 
