@@ -29,12 +29,13 @@ body{
 }
 
 .date-overlay{
-    position: relative;
-    top: -75%;
+    position: absolute;
+    top: 27%;
     left: 0;
-    z-index: 1; 
+    z-index: 1;
     font-size: 200px;
     text-align: center;
+    justify-content: center;
 }
 
 .row {
