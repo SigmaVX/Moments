@@ -49,6 +49,7 @@
                     var newsArtOne = [];
                     var newsArtTwo = [];
                     var newsArtThree = [];
+                    var momentCounter = 0;
 
 
                     // lays out the foundation for the future object
@@ -81,6 +82,8 @@
                     $("#add").on("click", function (e) {
                         e.preventDefault();
                         addDate();
+                        momentCounter++;
+                        console.log(momentCounter);
 
                     })
                     //builds the search array using the variables declared in the next function querySearch
