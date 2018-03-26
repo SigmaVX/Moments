@@ -135,7 +135,7 @@ $(document).ready(function(){
 
     }
 function dateDisplayCall(x, y){
-	var dateD = y + "/" + x + " & ";
+	var dateD = y + "/" + x ;
 	datesDisplay.push(dateD);
 	// console.log('datedispay=', datesDisplay);
 
@@ -418,7 +418,7 @@ function dateDisplayCall(x, y){
 								newsBodyThree.append(headlineThree);
 						
 				// Date Overlay
-				var dateOverlay = $("<h2>").html("");
+				var dateOverlay = $("<h2>").html(datesDisplay[i]);
 					dateOverlay.attr("class", "col-12 date-overlay");
 					newSection.append(dateOverlay);
 			
@@ -427,7 +427,8 @@ function dateDisplayCall(x, y){
 
 	// Resets All Data In Arrays 
 	function reset(){
-		 dates = [];
+		datesDisplay = []; 
+		dates = [];
 		 movieArtOne = [];
 		 movieArtTwo = [];
 		 movieArtThree = [];
