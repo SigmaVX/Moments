@@ -3,30 +3,33 @@ $(document).ready(function(){
 	// Initial Page Display Settings
 	$("#moment-count-area").hide();
 	$("#results").hide();
+	init();
+	
 
 	// Keep Track Of Sections For Fullwidth JS
 	var slideCount = 0;
 
 	// Arrays
-	var dates = ["10/22/1955"];
-    var movieArtOne = ["./assets/images/test-poster.jpg"];
-    var movieArtTwo = ["./assets/images/test-poster.jpg"];
-    var movieArtThree = ["./assets/images/test-poster.jpg"];
-    var tvArtOne = ["./assets/images/test-tv.jpg"];
-    var tvArtTwo = ["./assets/images/test-tv.jpg"];
-    var tvArtThree = ["./assets/images/test-tv.jpg"];
-    var newsTextOne = ["Some Text For A News Headline"];
-    var newsTextTwo = ["Some Text For A News Headline"];
-    var newsTextThree = ["Some Text For A News Headline"];
-    var newsArtOne = ["./assets/images/test-news.jpg"];
-    var newsArtTwo = ["./assets/images/test-news.jpg"];
-    var newsArtThree = ["./assets/images/test-news.jpg"];
-    var musicArtOne=["./assets/images/test-music.jpg"];
-    var musicArtTwo = ["./assets/images/test-music.jpg"];
-    var musicArtThree = ["./assets/images/test-music.jpg"];
-    var musicTextOne = ["Some Text For A Music Headline"];
-    var musicTextTwo = ["Some Text For A Music Headline"];
-    var musicTextThree = ["Some Text For A Music Headline"];  
+	var datesDisplay = [];
+	var dates = [];
+    var movieArtOne = [];
+    var movieArtTwo = [];
+    var movieArtThree = [];
+    var tvArtOne = [];
+    var tvArtTwo = [];
+    var tvArtThree = [];
+    var newsTextOne = [];
+    var newsTextTwo = [];
+    var newsTextThree = [];
+    var newsArtOne = [];
+    var newsArtTwo = [];
+    var newsArtThree = [];
+	var musicArtOne=["./assets/images/flowjs.png"];
+	var musicArtTwo = ["./assets/images/themoviedb.png"];
+	var musicArtThree = ["./assets/images/Newyorktimes.jpg"];
+	var musicTextOne = [datesDisplay];
+	var musicTextTwo = ["Remember this?"];
+	var musicTextThree = ["Moments"]; 
 
 	function Searchdate(month, year) {  
         this.month = month;
@@ -95,7 +98,7 @@ $(document).ready(function(){
                 for (var n = 0; n <= 3; n++) {
                     var artArr = res.response.docs[n].multimedia;
                     if (artArr.length < 1) {
-                        newsArr.push('imgur.com');
+                        newsArr.push("./assets/images/reel.jpg");
                     } else {
                         newsArr.push("https://static01.nyt.com/" + artArr[0].url);
                     }
@@ -115,13 +118,19 @@ $(document).ready(function(){
     function querySearch() {
         for (var i = 0; i < dates.length; i++) {
             var x = dates[i].year;
-            var y = dates[i].month;
+			var y = dates[i].month;
+			dateDisplayCall(x, y);
             movieQueryCall(x, y);
             nyTimesQueryCall(x, y);
         }
 
     }
+function dateDisplayCall(x, y){
+	var dateD = y + "/" + x;
+	datesDisplay.push(dateD);
+	// console.log('datedispay=', datesDisplay);
 
+}
 
 	// Initializes Fullwidth JS
 	function init(){
@@ -130,7 +139,7 @@ $(document).ready(function(){
 			menu: '#menu',
 			lockAnchors: false,
 			anchors:['firstPage', 'secondPage', 'thirdPage'],
-			navigation: true,
+			navigation: false,
 			navigationPosition: 'center',
 			showActiveTooltip: false,
 			
@@ -168,7 +177,7 @@ $(document).ready(function(){
 			//Design
 			controlArrows: false,
 			verticalCentered: true,
-			sectionsColor : ['red', 'blue', 'yellow', 'grey', 'black'],
+			sectionsColor : ['#BFCDE0', '#A1B0AB', '#929487', '#A9B3CE', '#FEFCFD'],
 			paddingTop: '1em',
 			paddingBottom: '1em',
 			responsiveWidth: 0,
@@ -188,21 +197,22 @@ $(document).ready(function(){
 	function makeMoments(){
 
 		for(var i=0; i<dates.length; i++){
-			console.log('movieart1', movieArtOne);
-			console.log('movieart2', movieArtTwo);
-			console.log('movieart3', movieArtThree);
-			console.log('tvart1', tvArtOne);
-			console.log('tvart2', tvArtTwo);
-			console.log('tvart3', tvArtThree);
-			console.log('newstext1', newsTextOne);
-			console.log('newstext2', newsTextTwo);
-			console.log('newstext3', newsTextThree);
-			console.log('newsart1', newsArtOne);
-			console.log('newsart2', newsArtTwo);
-			console.log('newsart3', newsArtThree);
+			// console.log('movieart1', movieArtOne);
+			// console.log('movieart2', movieArtTwo);
+			// console.log('movieart3', movieArtThree);
+			// console.log('tvart1', tvArtOne);
+			// console.log('tvart2', tvArtTwo);
+			// console.log('tvart3', tvArtThree);
+			// console.log('newstext1', newsTextOne);
+			// console.log('newstext2', newsTextTwo);
+			// console.log('newstext3', newsTextThree);
+			// console.log('newsart1', newsArtOne);
+			// console.log('newsart2', newsArtTwo);
+			// console.log('newsart3', newsArtThree);
+			
 
 			slideCount++;
-			console.log("Slide Count: " + slideCount);
+			// console.log("Slide Count: " + slideCount);
 			
 			var newSection = $("<div>").attr("class", "section slide");
 				newSection.attr("style", "padding-top: 0px;")
@@ -223,10 +233,10 @@ $(document).ready(function(){
 					var moviePosterOne = $("<img>").attr({
 							class: "img-fluid",
 							alt: "movie-poster",
-							src: movieArtOne[i]
+							src: movieArtOne[i] 
 							});
 							movieDivOne.append(moviePosterOne);
-							console.log("movie art one test: " + movieArtOne[i]);
+					
 				
 				// Div 2 
 				var newsCardOne = $("<div>").attr("class", "card col-2 news-card animated flipInY");
@@ -256,6 +266,7 @@ $(document).ready(function(){
 							src: tvArtOne[i]
 							});
 							tvDivOne.append(tvPosterOne);
+							console.log("tv art 1 = " , tvArtOne);
 
 				// Div 4
 				var movieDivTwo = $("<div>").attr("class", "card col-2 animated flipInY");
@@ -398,7 +409,7 @@ $(document).ready(function(){
 								newsBodyThree.append(headlineThree);
 						
 				// Date Overlay
-				var dateOverlay = $("<h2>").html("10/22/1955");
+				var dateOverlay = $("<h2>").html("");
 					dateOverlay.attr("class", "col-12 date-overlay");
 					newSection.append(dateOverlay);
 			
@@ -447,7 +458,8 @@ $(document).ready(function(){
 		
 		if(dates.length > 0){
 			console.log("Dates Added:" + dates);
-			slideCount = 0;		
+			slideCount = 0;	
+			$.fn.fullpage.destroy('all');	
 			querySearch();
 			makeMoments();
 			$("#start-section").hide();

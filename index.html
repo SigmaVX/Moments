@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Moments</title>
 
@@ -19,8 +19,6 @@
 </head>
 
 <body>
-
-        <div id="fullpage">
 
     <!-- Start Section -->
     <div id="splash">
@@ -44,7 +42,7 @@
                             <input type="text" class="form-control" id="userMonth" placeholder="month ex : 11">
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" id="add" class="btn btn-block">Add Another Moment</button>
+                            <button type="submit" id="add" class="btn btn-block">Add Moment</button>
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" id="start" class="btn btn-block">Start</button>
@@ -54,11 +52,12 @@
                         <div class="text-center" id="count-section">
                             <!-- Add Counter Here -->
                             <h3 class="col-12">Moments</h3>
-                            <div id="moment-counter">7</div>
+                            <div id="moment-counter">0</div>
                         </div>
                     </div>
             </div>
         </div>
+
         <!--Footer Section-->
         <footer>
             <div class="container-fluid">
@@ -71,12 +70,11 @@
                 </div>
             </div>
         </footer>
-
-
     </div>
 
     <!-- Moments Section -->
     
+    <div id="fullpage">
 
         <!-- Moments Added By jQuery Here -->
 
@@ -96,7 +94,7 @@
                 You Must Enter A Date To Get Started!
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-block" data-dismiss="modal">Close</button>
                 </div>
             </div>
             </div>
