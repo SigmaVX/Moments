@@ -56,6 +56,10 @@ body{
     margin: 0 auto;
 }
 
+#splah{
+    max-height: 100vh;
+}
+
 #start-page {
     padding-top: 10%;
 }

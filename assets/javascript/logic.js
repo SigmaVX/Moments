@@ -1,28 +1,32 @@
 $(document).ready(function(){
 
+	// Initial Page Display Settings
+	$("#moment-count-area").hide();
+	$("#results").hide();
+
 	// Keep Track Of Sections For Fullwidth JS
 	var slideCount = 0;
 
 	// Arrays
-	var dates = [];
-    var movieArtOne = [];
-    var movieArtTwo = [];
-    var movieArtThree = [];
-    var tvArtOne = [];
-    var tvArtTwo = [];
-    var tvArtThree = [];
-    var newsTextOne = [];
-    var newsTextTwo = [];
-    var newsTextThree = [];
-    var newsArtOne = [];
-    var newsArtTwo = [];
-    var newsArtThree = [];
-	var musicArtOne=["./assets/images/test-music.jpg"];
-	var musicArtTwo = ["./assets/images/test-music.jpg"];
-	var musicArtThree = ["./assets/images/test-music.jpg"];
-	var musicTextOne = ["Some Text For A Music Headline"];
-	var musicTextTwo = ["Some Text For A Music Headline"];
-	var musicTextThree = ["Some Text For A Music Headline"]; 
+	var dates = ["10/22/1955"];
+    var movieArtOne = ["./assets/images/test-poster.jpg"];
+    var movieArtTwo = ["./assets/images/test-poster.jpg"];
+    var movieArtThree = ["./assets/images/test-poster.jpg"];
+    var tvArtOne = ["./assets/images/test-tv.jpg"];
+    var tvArtTwo = ["./assets/images/test-tv.jpg"];
+    var tvArtThree = ["./assets/images/test-tv.jpg"];
+    var newsTextOne = ["Some Text For A News Headline"];
+    var newsTextTwo = ["Some Text For A News Headline"];
+    var newsTextThree = ["Some Text For A News Headline"];
+    var newsArtOne = ["./assets/images/test-news.jpg"];
+    var newsArtTwo = ["./assets/images/test-news.jpg"];
+    var newsArtThree = ["./assets/images/test-news.jpg"];
+    var musicArtOne=["./assets/images/test-music.jpg"];
+    var musicArtTwo = ["./assets/images/test-music.jpg"];
+    var musicArtThree = ["./assets/images/test-music.jpg"];
+    var musicTextOne = ["Some Text For A Music Headline"];
+    var musicTextTwo = ["Some Text For A Music Headline"];
+    var musicTextThree = ["Some Text For A Music Headline"];  
 
 	function Searchdate(month, year) {  
         this.month = month;
@@ -424,27 +428,37 @@ $(document).ready(function(){
 		 musicTextThree = []; 
 	}
 
+	// Adding Dates Into Array
 	$("#add").on("click", function (e) {
         e.preventDefault();
-        addDate();
+		addDate();
+		$("#moment-count-area").show();
         slideCount++;
         $("#moment-counter").empty();
         $("#moment-counter").append(slideCount);
-        // console.log(momentCounter);
 
 	})
 	
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
-		slideCount = 0;
 		event.preventDefault();
 		console.log("click OK");
+		console.log("Dates Length:" + dates.length);
 		
-		querySearch();
-		makeMoments();
-		$("#start-section").hide();
-		$("#videoHolder").hide();
-		init();
+		if(dates.length > 0){
+			console.log("Dates Added:" + dates);
+			slideCount = 0;		
+			querySearch();
+			makeMoments();
+			$("#start-section").hide();
+			$("#videoHolder").hide();
+			$("footer").hide();
+			$("#results").show();
+			init();
+			} else {
+				$("#noDatesModal").modal('show');
+		}
+
 	});
 
 
