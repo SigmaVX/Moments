@@ -52,7 +52,8 @@ $(document).ready(function(){
     function movieQueryCall(a, b) {
         $.ajax({
             url: `https://api.themoviedb.org/3/discover/movie?primary_release_date.lte=${a}-${b}&primary_release_date.gte=${a}-${b}&page=1&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
-            method: "GET",
+			method: "GET",
+			async: false ,
             success: function (res) {
                 movieArtOne.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     0].poster_path);
@@ -66,7 +67,8 @@ $(document).ready(function(){
 
         $.ajax({
             url: `https://api.themoviedb.org/3/discover/tv?include_null_first_air_dates=false&timezone=America%2FNew_York&page=1&air_date.lte=${a}-${b}&air_date.gte=${a}-${b}&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
-            method: "GET",
+			method: "GET",
+			async: false ,
             success: function (res) {
                 tvArtOne.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     0].poster_path);
@@ -82,7 +84,8 @@ $(document).ready(function(){
         var newsArr = [];
         $.ajax({
             url: `https://cors-anywhere.herokuapp.com/http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=6bbf303c1d5f47a8b9b82a475fe15fe7&q=national%20news&begin_date=${a}${b}01&sort=oldest&page=1&facet_filter=true`,
-            method: "GET",
+			method: "GET",
+			async: false , 
             success: function (res) {
                 newsTextOne.push(res.response.docs[0].headline.print_headline);
                 newsTextTwo.push(res.response.docs[1].headline.print_headline);
@@ -227,7 +230,8 @@ function dateDisplayCall(x, y){
 					var moviePosterOne = $("<img>").attr({
 							class: "img-fluid",
 							alt: "movie-poster",
-							src: movieArtOne[0][i] 
+							src: movieArtOne[0] 
+							// src: movieArtOne[i] 
 							});
 							movieDivOne.append(moviePosterOne);
 							
@@ -281,7 +285,7 @@ function dateDisplayCall(x, y){
 						var musicImgOne = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtOne[i]
+							src: musicArtOne
 							});
 							musicCardOne.append(musicImgOne);
 						
@@ -315,7 +319,7 @@ function dateDisplayCall(x, y){
 						var musicImgTwo = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtTwo[i]
+							src: musicArtTwo
 							});
 							musicCardTwo.append(musicImgTwo);
 						
@@ -362,7 +366,7 @@ function dateDisplayCall(x, y){
 						var musicImgThree = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtThree[i]
+							src: musicArtThree
 							});
 							musicCardThree.append(musicImgThree);
 						
@@ -448,13 +452,25 @@ function dateDisplayCall(x, y){
 	$("#start").on("click", function(event){
 		slideCount = 0;
 		event.preventDefault();
-		// console.log("click OK");
-		querySearch();
-		makeMoments();
-		$("#start-section").hide();
-		$("#videoHolder").hide();
-		init();
-		console.log(dates);
+
+		console.log("click OK");
+		console.log("Dates Length:" + dates.length);
+		
+		if(dates.length > 0){
+			console.log("Dates Added:" + dates);
+			slideCount = 0;	
+			// $.fn.fullpage.destroy('all');	
+			querySearch();
+			makeMoments();
+			$("#start-section").hide();
+			$("#videoHolder").hide();
+			$("footer").hide();
+			$("#results").show();
+			init();
+			} else {
+				$("#noDatesModal").modal('show');
+		}
+
 	});
 
 
