@@ -206,22 +206,22 @@ function dateDisplayCall(x, y){
 	function makeMoments(){
 
 		for(var i=0; i<dates.length; i++){
-			// console.log('movieart1', movieArtOne);
-			// console.log('movieart2', movieArtTwo);
-			// console.log('movieart3', movieArtThree);
-			// console.log('tvart1', tvArtOne);
-			// console.log('tvart2', tvArtTwo);
-			// console.log('tvart3', tvArtThree);
-			// console.log('newstext1', newsTextOne);
-			// console.log('newstext2', newsTextTwo);
-			// console.log('newstext3', newsTextThree);
-			// console.log('newsart1', newsArtOne);
-			// console.log('newsart2', newsArtTwo);
-			// console.log('newsart3', newsArtThree);
+			console.log('movieart1', movieArtOne);
+			console.log('movieart2', movieArtTwo);
+			console.log('movieart3', movieArtThree);
+			console.log('tvart1', tvArtOne);
+			console.log('tvart2', tvArtTwo);
+			console.log('tvart3', tvArtThree);
+			console.log('newstext1', newsTextOne);
+			console.log('newstext2', newsTextTwo);
+			console.log('newstext3', newsTextThree);
+			console.log('newsart1', newsArtOne);
+			console.log('newsart2', newsArtTwo);
+			console.log('newsart3', newsArtThree);
 			
 
 			slideCount++;
-			// console.log("Slide Count: " + slideCount);
+			console.log("Slide Count: " + slideCount);
 			
 			var newSection = $("<div>").attr("class", "section slide");
 				newSection.attr("style", "padding-top: 0px;")
@@ -479,7 +479,8 @@ function dateDisplayCall(x, y){
 			$("#results").show();
 			init();
 			} else {
-				$("#noDatesModal").modal('show');
+			$("#noDatesModal").modal('show');
+				
 		}
 
 	});
