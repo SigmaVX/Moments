@@ -116,6 +116,7 @@ $(document).ready(function(){
 							src: movieArtOne[i]
 							});
 							movieDivOne.append(moviePosterOne);
+							console.log("movie art one test: " + movieArtOne[i]);
 				
 				// Div 2 
 				var newsCardOne = $("<div>").attr("class", "card col-2 news-card animated flipInY");
@@ -322,6 +323,8 @@ $(document).ready(function(){
 		slideCount = 0;
 		event.preventDefault();
 		console.log("click OK");
+
+		// add api function
 		makeMoments();
 		$("#start-section").hide();
 		$("#videoHolder").hide();
