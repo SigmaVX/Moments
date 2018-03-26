@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Moments</title>
 
@@ -20,43 +20,42 @@
 
 <body>
 
-
-
     <!-- Start Section -->
+    <div id="splash">
+        <video autoplay muted loop id="videoHolder">
+            <source class="video" src="./assets/images/sky.mp4" type="video/mp4">
+        </video>
 
-    <video autoplay muted loop id="videoHolder">
-        <source class="video" src="./assets/images/sky.mp4" type="video/mp4">
-    </video>
+        <div class="section" id="start-section">
+            <div class="container" id="start-page">
+                <h1 class="text-center">Moments</h1>
+                <h2 class="text-center">Relive Your Moments</h2>
 
-    <div class="section" id="start-section">
-        <div class="container" id="start-page">
-            <h1 class="text-center">Moments</h1>
-            <h2 class="text-center">Relive Your Moments</h2>
-
-            <form class="offset-4 col-4 justify-content-center" id="addTrainsForm">
-                <div class="form-group text-center" id="first-date">
-                    <label class="text-center" for="moment-label">Your Moment | Enter A Date</label>
-                    <input type="text" class="form-control" id="userYear" placeholder="Year ex : 1955">
-                </div>
                 <form class="offset-4 col-4 justify-content-center" id="addTrainsForm">
                     <div class="form-group text-center" id="first-date">
-                        
-                        <input type="text" class="form-control" id="userMonth" placeholder="month ex : 11">
+                        <label class="text-center" for="moment-label">Your Moment | Enter A Date</label>
+                        <input type="text" class="form-control" id="userYear" placeholder="Year ex : 1955">
                     </div>
-                    <div class="form-group text-center">
-                        <button type="submit" id="add" class="btn btn-block">Add Another Moment</button>
+                    <form class="offset-4 col-4 justify-content-center" id="addTrainsForm">
+                        <div class="form-group text-center" id="first-date">
+                            
+                            <input type="text" class="form-control" id="userMonth" placeholder="month ex : 11">
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" id="add" class="btn btn-block">Add Moment</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" id="start" class="btn btn-block">Start</button>
+                        </div>
+                    </form>
+                    <div class="row justify-content-center" id="moment-count-area">
+                        <div class="text-center" id="count-section">
+                            <!-- Add Counter Here -->
+                            <h3 class="col-12">Moments</h3>
+                            <div id="moment-counter">0</div>
+                        </div>
                     </div>
-                    <div class="form-group text-center">
-                        <button type="submit" id="start" class="btn btn-block">Start</button>
-                    </div>
-                </form>
-                <div class="row justify-content-center" id="moment-count-area">
-                    <div class="text-center" id="count-section">
-                        <!-- Add Counter Here -->
-                        <h3 class="col-12">Moments</h3>
-                        <div id="moment-counter">0 </div>
-                    </div>
-                </div>
+            </div>
         </div>
 
         <!--Footer Section-->
@@ -65,20 +64,42 @@
                 <div class="row">
                     <div class="col-sm-12 pt-4 pb-3 text-center">
                         <p>
-                            <strong>© Copyright 2018 GTJ</strong>
+                         <strong>© Copyright 2018 GTJ</strong>
                         </p>
                     </div>
                 </div>
             </div>
         </footer>
-
-
     </div>
 
     <!-- Moments Section -->
+    
     <div id="fullpage">
 
         <!-- Moments Added By jQuery Here -->
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="noDatesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                You Must Enter A Date To Get Started!
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-block" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
 
         <!-- Results Section -->
         <div class="section" id="results">

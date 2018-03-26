@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	// Initial Page Display Settings
+	$("#moment-count-area").hide();
+	$("#results").hide();
+	init();
+	
+
 	// Keep Track Of Sections For Fullwidth JS
 	var slideCount = 0;
 
@@ -133,7 +139,7 @@ function dateDisplayCall(x, y){
 			menu: '#menu',
 			lockAnchors: false,
 			anchors:['firstPage', 'secondPage', 'thirdPage'],
-			navigation: true,
+			navigation: false,
 			navigationPosition: 'center',
 			showActiveTooltip: false,
 			
@@ -171,7 +177,7 @@ function dateDisplayCall(x, y){
 			//Design
 			controlArrows: false,
 			verticalCentered: true,
-			sectionsColor : ['red', 'blue', 'yellow', 'grey', 'black'],
+			sectionsColor : ['#BFCDE0', '#A1B0AB', '#929487', '#A9B3CE', '#FEFCFD'],
 			paddingTop: '1em',
 			paddingBottom: '1em',
 			responsiveWidth: 0,
@@ -227,11 +233,10 @@ function dateDisplayCall(x, y){
 					var moviePosterOne = $("<img>").attr({
 							class: "img-fluid",
 							alt: "movie-poster",
-							src: movieArtOne[0][i] 
+							src: movieArtOne[i] 
 							});
 							movieDivOne.append(moviePosterOne);
-							
-							console.log("movieart1", movieArtOne);
+					
 				
 				// Div 2 
 				var newsCardOne = $("<div>").attr("class", "card col-2 news-card animated flipInY");
@@ -434,27 +439,38 @@ function dateDisplayCall(x, y){
 		 musicTextThree = []; 
 	}
 
+	// Adding Dates Into Array
 	$("#add").on("click", function (e) {
         e.preventDefault();
-        addDate();
+		addDate();
+		$("#moment-count-area").show();
         slideCount++;
         $("#moment-counter").empty();
         $("#moment-counter").append(slideCount);
-        // console.log(momentCounter);
 
 	})
 	
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
-		slideCount = 0;
 		event.preventDefault();
-		// console.log("click OK");
-		querySearch();
-		makeMoments();
-		$("#start-section").hide();
-		$("#videoHolder").hide();
-		init();
-		console.log(dates);
+		console.log("click OK");
+		console.log("Dates Length:" + dates.length);
+		
+		if(dates.length > 0){
+			console.log("Dates Added:" + dates);
+			slideCount = 0;	
+			$.fn.fullpage.destroy('all');	
+			querySearch();
+			makeMoments();
+			$("#start-section").hide();
+			$("#videoHolder").hide();
+			$("footer").hide();
+			$("#results").show();
+			init();
+			} else {
+				$("#noDatesModal").modal('show');
+		}
+
 	});
 
 
