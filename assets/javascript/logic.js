@@ -25,6 +25,7 @@ $(document).ready(function(){
 	var musicTextTwo = ["Remember this?"];
 	var musicTextThree = ["Moments"]; 
 
+
 	function Searchdate(month, year) {  
         this.month = month;
         this.year = year;
@@ -90,7 +91,8 @@ $(document).ready(function(){
                 newsTextOne.push(res.response.docs[0].headline.print_headline);
                 newsTextTwo.push(res.response.docs[1].headline.print_headline);
                 newsTextThree.push(res.response.docs[2].headline.print_headline);
-                
+				
+				//no error so this forloop is needed if there is nothing in an array
                 
                 for (var n = 0; n <= 3; n++) {
                     var artArr = res.response.docs[n].multimedia;
@@ -194,18 +196,18 @@ function dateDisplayCall(x, y){
 	function makeMoments(){
 
 		for(var i=0; i<dates.length; i++){
-			// console.log('movieart1', movieArtOne);
-			// console.log('movieart2', movieArtTwo);
-			// console.log('movieart3', movieArtThree);
-			// console.log('tvart1', tvArtOne);
-			// console.log('tvart2', tvArtTwo);
-			// console.log('tvart3', tvArtThree);
-			// console.log('newstext1', newsTextOne);
-			// console.log('newstext2', newsTextTwo);
-			// console.log('newstext3', newsTextThree);
-			// console.log('newsart1', newsArtOne);
-			// console.log('newsart2', newsArtTwo);
-			// console.log('newsart3', newsArtThree);
+			console.log('movieart1', movieArtOne);
+			console.log('movieart2', movieArtTwo);
+			console.log('movieart3', movieArtThree);
+			console.log('tvart1', tvArtOne);
+			console.log('tvart2', tvArtTwo);
+			console.log('tvart3', tvArtThree);
+			console.log('newstext1', newsTextOne);
+			console.log('newstext2', newsTextTwo);
+			console.log('newstext3', newsTextThree);
+			console.log('newsart1', newsArtOne);
+			console.log('newsart2', newsArtTwo);
+			console.log('newsart3', newsArtThree);
 			
 
 			slideCount++;
@@ -231,7 +233,6 @@ function dateDisplayCall(x, y){
 							class: "img-fluid",
 							alt: "movie-poster",
 							src: movieArtOne[0] 
-							// src: movieArtOne[i] 
 							});
 							movieDivOne.append(moviePosterOne);
 							
