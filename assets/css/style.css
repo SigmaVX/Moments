@@ -1,6 +1,3 @@
-body{
-    padding-top: 0em;
-}
 
 .card{
     flex: 1; 
@@ -56,10 +53,13 @@ body{
     margin: 0 auto;
 }
 
+#splah{
+    max-height: 100vh;
+}
+
 #start-page {
     padding-top: 10%;
 }
-
 
 #start-section{
     z-index: 1;

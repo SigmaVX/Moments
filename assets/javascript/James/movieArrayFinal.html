@@ -156,6 +156,7 @@ $(document).ready(function () {
                 
                 for (var n = 0; n <= 3; n++) {
                     var artArr = res.response.docs[n].multimedia;
+                    console.log("ArtArr" + artArr);
                     if (artArr.length < 1) {
                         newsArr.push('imgur.com');
                     } else {
