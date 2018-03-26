@@ -14,10 +14,12 @@ $(document).ready(function(){
 	var dates = [];
     var movieArtOne = [];
     var movieArtTwo = [];
-    var movieArtThree = [];
+	var movieArtThree = [];
+	var movieArtFour = [];
+	var movieArtFive = [];
     var tvArtOne = [];
     var tvArtTwo = [];
-    var tvArtThree = [];
+	var tvArtThree = [];
     var newsTextOne = [];
     var newsTextTwo = [];
     var newsTextThree = [];
@@ -58,21 +60,27 @@ $(document).ready(function(){
     function movieQueryCall(a, b) {
         $.ajax({
             url: `https://api.themoviedb.org/3/discover/movie?primary_release_date.lte=${a}-${b}&primary_release_date.gte=${a}-${b}&page=1&include_video=false&include_adult=false&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
-            method: "GET",
+			method: "GET",
+			async: false ,
             success: function (res) {
                 movieArtOne.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     0].poster_path);
                 movieArtTwo.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     1].poster_path);
                 movieArtThree.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
-                    2].poster_path);
+					2].poster_path);
+				movieArtFour.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
+					3].poster_path);
+				movieArtFive.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
+					4].poster_path);
              }
         })
 
 
         $.ajax({
             url: `https://api.themoviedb.org/3/discover/tv?include_null_first_air_dates=false&timezone=America%2FNew_York&page=1&air_date.lte=${a}-${b}&air_date.gte=${a}-${b}&sort_by=popularity.desc&language=en-US&api_key=cfa5e4068ccc1d88d711e2257e1e0ec5`,
-            method: "GET",
+			method: "GET",
+			async: false ,
             success: function (res) {
                 tvArtOne.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     0].poster_path);
@@ -88,7 +96,8 @@ $(document).ready(function(){
         var newsArr = [];
         $.ajax({
             url: `https://cors-anywhere.herokuapp.com/http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=6bbf303c1d5f47a8b9b82a475fe15fe7&q=national%20news&begin_date=${a}${b}01&sort=oldest&page=1&facet_filter=true`,
-            method: "GET",
+			method: "GET",
+			async: false,
             success: function (res) {
                 newsTextOne.push(res.response.docs[0].headline.print_headline);
                 newsTextTwo.push(res.response.docs[1].headline.print_headline);
@@ -98,11 +107,11 @@ $(document).ready(function(){
                 for (var n = 0; n <= 3; n++) {
                     var artArr = res.response.docs[n].multimedia;
                     if (artArr.length < 1) {
-                        newsArr.push("./assets/images/reel.jpg");
+                        newsArr.push(movieArtFour);
                     } else {
                         newsArr.push("https://static01.nyt.com/" + artArr[0].url);
                     }
-                                       
+                                  console.log('newsarr:',newsArr);     
                 }
                 
                 newsArtOne.push(newsArr[0]);
@@ -126,7 +135,7 @@ $(document).ready(function(){
 
     }
 function dateDisplayCall(x, y){
-	var dateD = y + "/" + x;
+	var dateD = y + "/" + x + " & ";
 	datesDisplay.push(dateD);
 	// console.log('datedispay=', datesDisplay);
 
@@ -286,7 +295,7 @@ function dateDisplayCall(x, y){
 						var musicImgOne = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtOne[i]
+							src: musicArtOne
 							});
 							musicCardOne.append(musicImgOne);
 						
@@ -320,7 +329,7 @@ function dateDisplayCall(x, y){
 						var musicImgTwo = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtTwo[i]
+							src: musicArtTwo
 							});
 							musicCardTwo.append(musicImgTwo);
 						
@@ -367,7 +376,7 @@ function dateDisplayCall(x, y){
 						var musicImgThree = $("<img>").attr({
 							class: "card-img-top img-fluid",
 							alt: "music-image",
-							src: musicArtThree[i]
+							src: musicArtThree
 							});
 							musicCardThree.append(musicImgThree);
 						
@@ -453,6 +462,7 @@ function dateDisplayCall(x, y){
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
 		event.preventDefault();
+
 		console.log("click OK");
 		console.log("Dates Length:" + dates.length);
 		
