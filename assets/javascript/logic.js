@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-	// Initial Page Display Settings
-	$("#moment-count-area").hide();
-	$("#results").hide();
-	init();
-	
-
 	// Keep Track Of Sections For Fullwidth JS
 	var slideCount = 0;
 
@@ -14,12 +8,10 @@ $(document).ready(function(){
 	var dates = [];
     var movieArtOne = [];
     var movieArtTwo = [];
-	var movieArtThree = [];
-	var movieArtFour = [];
-	var movieArtFive = [];
+    var movieArtThree = [];
     var tvArtOne = [];
     var tvArtTwo = [];
-	var tvArtThree = [];
+    var tvArtThree = [];
     var newsTextOne = [];
     var newsTextTwo = [];
     var newsTextThree = [];
@@ -32,6 +24,7 @@ $(document).ready(function(){
 	var musicTextOne = [datesDisplay];
 	var musicTextTwo = ["Remember this?"];
 	var musicTextThree = ["Moments"]; 
+
 
 	function Searchdate(month, year) {  
         this.month = month;
@@ -68,11 +61,7 @@ $(document).ready(function(){
                 movieArtTwo.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
                     1].poster_path);
                 movieArtThree.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
-					2].poster_path);
-				movieArtFour.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
-					3].poster_path);
-				movieArtFive.push("https://image.tmdb.org/t/p/w600_and_h900_bestv2" + res.results[
-					4].poster_path);
+                    2].poster_path);
              }
         })
 
@@ -97,21 +86,22 @@ $(document).ready(function(){
         $.ajax({
             url: `https://cors-anywhere.herokuapp.com/http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=6bbf303c1d5f47a8b9b82a475fe15fe7&q=national%20news&begin_date=${a}${b}01&sort=oldest&page=1&facet_filter=true`,
 			method: "GET",
-			async: false,
+			async: false , 
             success: function (res) {
                 newsTextOne.push(res.response.docs[0].headline.print_headline);
                 newsTextTwo.push(res.response.docs[1].headline.print_headline);
                 newsTextThree.push(res.response.docs[2].headline.print_headline);
-                
+				
+				//no error so this forloop is needed if there is nothing in an array
                 
                 for (var n = 0; n <= 3; n++) {
                     var artArr = res.response.docs[n].multimedia;
                     if (artArr.length < 1) {
-                        newsArr.push(movieArtFour);
+                        newsArr.push("./assets/images/reel.jpg");
                     } else {
                         newsArr.push("https://static01.nyt.com/" + artArr[0].url);
                     }
-                                  console.log('newsarr:',newsArr);     
+                                       
                 }
                 
                 newsArtOne.push(newsArr[0]);
@@ -135,7 +125,7 @@ $(document).ready(function(){
 
     }
 function dateDisplayCall(x, y){
-	var dateD = y + "/" + x + " & ";
+	var dateD = y + "/" + x;
 	datesDisplay.push(dateD);
 	// console.log('datedispay=', datesDisplay);
 
@@ -148,7 +138,7 @@ function dateDisplayCall(x, y){
 			menu: '#menu',
 			lockAnchors: false,
 			anchors:['firstPage', 'secondPage', 'thirdPage'],
-			navigation: false,
+			navigation: true,
 			navigationPosition: 'center',
 			showActiveTooltip: false,
 			
@@ -186,7 +176,7 @@ function dateDisplayCall(x, y){
 			//Design
 			controlArrows: false,
 			verticalCentered: true,
-			sectionsColor : ['#BFCDE0', '#A1B0AB', '#929487', '#A9B3CE', '#FEFCFD'],
+			sectionsColor : ['red', 'blue', 'yellow', 'grey', 'black'],
 			paddingTop: '1em',
 			paddingBottom: '1em',
 			responsiveWidth: 0,
@@ -206,18 +196,18 @@ function dateDisplayCall(x, y){
 	function makeMoments(){
 
 		for(var i=0; i<dates.length; i++){
-			// console.log('movieart1', movieArtOne);
-			// console.log('movieart2', movieArtTwo);
-			// console.log('movieart3', movieArtThree);
-			// console.log('tvart1', tvArtOne);
-			// console.log('tvart2', tvArtTwo);
-			// console.log('tvart3', tvArtThree);
-			// console.log('newstext1', newsTextOne);
-			// console.log('newstext2', newsTextTwo);
-			// console.log('newstext3', newsTextThree);
-			// console.log('newsart1', newsArtOne);
-			// console.log('newsart2', newsArtTwo);
-			// console.log('newsart3', newsArtThree);
+			console.log('movieart1', movieArtOne);
+			console.log('movieart2', movieArtTwo);
+			console.log('movieart3', movieArtThree);
+			console.log('tvart1', tvArtOne);
+			console.log('tvart2', tvArtTwo);
+			console.log('tvart3', tvArtThree);
+			console.log('newstext1', newsTextOne);
+			console.log('newstext2', newsTextTwo);
+			console.log('newstext3', newsTextThree);
+			console.log('newsart1', newsArtOne);
+			console.log('newsart2', newsArtTwo);
+			console.log('newsart3', newsArtThree);
 			
 
 			slideCount++;
@@ -242,10 +232,11 @@ function dateDisplayCall(x, y){
 					var moviePosterOne = $("<img>").attr({
 							class: "img-fluid",
 							alt: "movie-poster",
-							src: movieArtOne[i] 
+							src: movieArtOne[0] 
 							});
 							movieDivOne.append(moviePosterOne);
-					
+							
+							console.log("movieart1", movieArtOne);
 				
 				// Div 2 
 				var newsCardOne = $("<div>").attr("class", "card col-2 news-card animated flipInY");
@@ -448,19 +439,19 @@ function dateDisplayCall(x, y){
 		 musicTextThree = []; 
 	}
 
-	// Adding Dates Into Array
 	$("#add").on("click", function (e) {
         e.preventDefault();
-		addDate();
-		$("#moment-count-area").show();
+        addDate();
         slideCount++;
         $("#moment-counter").empty();
         $("#moment-counter").append(slideCount);
+        // console.log(momentCounter);
 
 	})
 	
 	// Runs the JQ to Display Images and Start Annimation 
 	$("#start").on("click", function(event){
+		slideCount = 0;
 		event.preventDefault();
 
 		console.log("click OK");
@@ -469,7 +460,7 @@ function dateDisplayCall(x, y){
 		if(dates.length > 0){
 			console.log("Dates Added:" + dates);
 			slideCount = 0;	
-			$.fn.fullpage.destroy('all');	
+			// $.fn.fullpage.destroy('all');	
 			querySearch();
 			makeMoments();
 			$("#start-section").hide();
